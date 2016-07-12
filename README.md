@@ -222,8 +222,8 @@ TODO: IMAGEN
 * **Bundle Simbolic Name (BSN) y Bundle Version**
 El nombre y la versión especificada por el desarrollador. La combinación de ambos es el identificador único de un bundle en el framework.
 
-> **getSymbolicName**: Obtiene el bundle name de un bundle.
-> **getVersion**: Obtiene la versión de un bundle.
+	> **getSymbolicName**: Obtiene el bundle name de un bundle.
+	> **getVersion**: Obtiene la versión de un bundle.
 
 Es posible instalar el mismo bundle varias veces siempre y cuando esta pareja de valores no se encuentre ya desplegada en el framework.
 

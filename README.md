@@ -36,6 +36,8 @@ TODO: [Imagen]
 
 ### Modelos de dependencias
 
+<font color="red">Status: **Not yet implemented**</font>
+
 * El sistema debe resolver las dependencias del bundle, posiblemente en múltiples alternativas válidas de las cuales el sistema automáticamente **resolverá las dependencias con la mejor de las opciones posibles.**
 * El modelo de resolución de dependencias dinámico de OSGI siempre encuentra el bundle que mejor encaja con cada invocación **en tiempo de ejecución.**
 * OSGI recomienda la **dependencia a través de APIs.**

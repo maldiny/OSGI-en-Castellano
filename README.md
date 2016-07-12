@@ -54,7 +54,7 @@ TODO [IMAGEN]
 * **Micro**: Actualizaciones que no afectan al API, por ejemplo, un fix.
 * **Qualifier**: Un identificador como puede ser un timestamp.
 
-> **El consumidor de una API deberá importar un rango que comienza con la versión base y termina con la siguiente versión Major. Por ejemplo: [4.2,5)**
+<p align="center">**El consumidor de una API deberá importar un rango que comienza con la versión base y termina con la siguiente versión Major. Por ejemplo: [4.2,5)**</p>
 
 **[Ir al índice](#Índice)**
 

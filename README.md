@@ -239,6 +239,37 @@ Es un ID de tipo long asignado por el framework único para el bundle durante to
 
 > **getBundleID:** Obtiene el identificador de un bundle.
 
+### Bundle/BundleContext/BundleActivator
+
+* **BundleContext**
+
+Define la relación entre el estado actual del Framework y los bundles instalados en él. El BundleContext de un bundle se construye al iniciar un bundle. Entre otras operaciones, el BundleContext permitirá a un bundle realizar las siguientes operaciones:
+
+  1. Instalar nuevos bundles en el Framework.
+  2. Obtener información del resto de bundles desplegados en el Framework.
+  3. Crear listeners, registrar servicios, acceder a servicios,...
+
+* **BundleActivator**
+
+La interfaz BundleActivator se invoca cuando un bundle se inicia o detiene en el contenedor. Por este motivo define los métodos start(BundleContext) y stop(BundleContext).
+
+La clase que implementa la interfaz se define en el fichero MANIFEST.MF del siguiente modo:
+
+```css
+Bundle-Activator: com.everis.Activator
+```
+
+Los bundles de tipo Fragmento no disponen de un BundleActivator.
+
+Se pueden definir diferentes políticas de activación (lazy, eager,...)
+
+```css
+Bundle-ActivationPolicy ::= policy ( ’;’ directive )*
+policy ::= ’lazy’
+```
+
+TODO: PPT transparencia 19
+
 **[Ir al índice](#Índice)**
 
 ## Principios de los servicios

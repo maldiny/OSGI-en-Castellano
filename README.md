@@ -136,11 +136,11 @@ Los **antipatrones** son soluciones negativas que suelen presentar más problema
 Class clazz = Class.forName("org.example.domain.Event");
 ```
 
-- Permite la carga de clases **sin especificar el ClassLoader** empleado y como único argumento el nombre de la clase.
-- Utiliza el ClassLoader en ejecución que contiene la clase en la que se hace uso de la misma.
-- Complejo de utilizar el OSGI ya que el **ClassLoader es independiente por cada Bundle.**
-- Es necesario tener cargada la clase en el ClassLoader del Bundle por lo que será necesario especificar dicha dependencia en el MANIFEST.MF **Import-Package**.
-- Susceptible a generar excepciones en tiempo de ejecución de tipo **ClassNotFoundException**.
+  - Permite la carga de clases **sin especificar el ClassLoader** empleado y como único argumento el nombre de la clase.
+  - Utiliza el ClassLoader en ejecución que contiene la clase en la que se hace uso de la misma.
+  - Complejo de utilizar el OSGI ya que el **ClassLoader es independiente por cada Bundle.**
+  - Es necesario tener cargada la clase en el ClassLoader del Bundle por lo que será necesario especificar dicha dependencia en el MANIFEST.MF **Import-Package**.
+  - Susceptible a generar excepciones en tiempo de ejecución de tipo **ClassNotFoundException**.
 
 * **Thread Context ClassLoader**
 
@@ -149,9 +149,9 @@ ClassLoader tccl = Thread.currentThread().getContextClassLoader();
 Class clazz = Class.forName("org.example.domain.Event", true, tccl);
 ```
 
-- Es una de las soluciones **peor documentadas** de todas las especificaciones del J2EE.
-- OSGI **no puede garantizar** que el hilo en ejecución es el que se encuentra en ejecución para un determinado código fuente.
-- Los ClassLoaders en los hilos en OSGI no están definidos en las especificaciones de OSGI y su invocación **puede retornar “null”**.
+  - Es una de las soluciones **peor documentadas** de todas las especificaciones del J2EE.
+  - OSGI **no puede garantizar** que el hilo en ejecución es el que se encuentra en ejecución para un determinado código fuente.
+  - Los ClassLoaders en los hilos en OSGI no están definidos en las especificaciones de OSGI y su invocación **puede retornar “null”**.
 
 ### Antipatrones - Soluciones
 

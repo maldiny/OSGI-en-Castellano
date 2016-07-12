@@ -175,9 +175,9 @@ List events = session.createQuery("from Event").list();
 session.registerClass("org.example.domain.Person", Person.class);
 ```
 
-1. El cliente antes de realizar la petición realiza el registro de las clases en el la sesión.
-2. Permite el registro de clases directamente utilizando únicamente su nombre.
-3. Una vez registradas en la sesión puede recuperarse con Class.forName.
+  1. El cliente antes de realizar la petición realiza el registro de las clases en el la sesión.
+  2. Permite el registro de clases directamente utilizando únicamente su nombre.
+  3. Una vez registradas en la sesión puede recuperarse con Class.forName.
 
 * **Envío del ClassLoader**
 
@@ -186,9 +186,9 @@ SessionFactory.createSession(MyClass.class.getClassLoader());
 session.setDomainClassLoader(MyClass.class.getClassLoader());
 ```
 
-1. Es la opción con menor impacto en el código existente.
-2. Habrá que evaluar si esta opción se ajusta a las necesidades presentadas en cada caso.
-3. Se puede enviar “null” para indicar que el framework debe encontrar el ClassLoader adecuado.
+  1. Es la opción con menor impacto en el código existente.
+  2. Habrá que evaluar si esta opción se ajusta a las necesidades presentadas en cada caso.
+  3. Se puede enviar “null” para indicar que el framework debe encontrar el ClassLoader adecuado.
 
 **[Ir al índice](#Índice)**
 

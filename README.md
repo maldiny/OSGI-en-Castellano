@@ -36,8 +36,6 @@ TODO: [Imagen]
 
 ### Modelos de dependencias
 
-<span style="color:red">Status: **Not yet implemented**</span>
-
 * El sistema debe resolver las dependencias del bundle, posiblemente en múltiples alternativas válidas de las cuales el sistema automáticamente **resolverá las dependencias con la mejor de las opciones posibles.**
 * El modelo de resolución de dependencias dinámico de OSGI siempre encuentra el bundle que mejor encaja con cada invocación **en tiempo de ejecución.**
 * OSGI recomienda la **dependencia a través de APIs.**
@@ -56,7 +54,40 @@ TODO [IMAGEN]
 * **Micro**: Actualizaciones que no afectan al API, por ejemplo, un fix.
 * **Qualifier**: Un identificador como puede ser un timestamp.
 
-<p align="center">**El consumidor de una API deberá importar un rango que comienza con la versión base y termina con la siguiente versión Major. Por ejemplo: [4.2,5)**</p>
+**El consumidor de una API deberá importar un rango que comienza con la versión base y termina con la siguiente versión Major. Por ejemplo: [4.2,5)**
+
+### Imports dinámicos
+
+```css
+DynamicImport-Package: *;vendor=acme, *
+```
+
+* Esta etiqueta contiene valores separados por comas, donde se indican los **paquetes que pueden ser importados dinámicamente** cuando sean necesarios. 
+* Generalmente esta directiva se usa para **evitar dependencias cíclicas** cuando cargamos clases a través de Class.forName().
+* Los paquetes pueden ser nombrados **explícitamente o** mediante el uso de **expresiones** como org.foo.* o *. 
+
+### Cómo y cuando “the package wiring” ocurre
+
+Un aspecto fundamental del framework de OSGI es la gestión de las dependencias entre bundles. Estas dependencias se expresan en el **MANIFEST.MF** y se pueden clasificar como **requerimientos y capacidades**.
+
+El framework resuelve las dependencias durante la **fase de Resolución**. El framework debe resolver ser capaz de localizar una capacidad para cada requerimiento para poder declarar un bundle como **Resolved**.
+
+Los paquetes se reflejan en el osgi.wiring.package. Un **Import-Package** se mapea en el osgi.wiring.package como un requerimiento mientras que un **Export-Package** se mapea como una capacidad.
+* **Import-Package:** com.everis.foo; version=1
+* **Export-Package:** com.everis.foo; version=1
+
+TODO: [IMAGEN]
+
+### Entornos de ejecución
+
+TODO: [IMAGEN]
+
+- Apache Felix
+- Apache Karaf
+- Equinox
+- Jboss
+- Knopflerfish
+- ...
 
 **[Ir al índice](#Índice)**
 

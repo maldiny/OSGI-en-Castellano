@@ -89,6 +89,107 @@ TODO: [IMAGEN]
 - Knopflerfish
 - ...
 
+### Entornos de desarrollo
+
+Para el desarrollo de bundles OSGI se recomienda disponer de los siguientes frameworks:
+
+- **IDE** (Eclipse, Netbeans, IntelliJ,...): Como entorno de desarrollo.
+- **Maven 3.0** para la gestión de dependencias y construcción de artefactos.
+- **Maven-bundle-plugin** para la generación de los MANIFEST.MF a partir del pom.xml
+- **Apache Felix** como entorno OSGI de despliegue de bundles.
+
+TODO: [IMAGEN]
+
+Opcionalmente a estos componentes, nombrar la existencia del plugin de eclipse **BndTools** que nos facilitará numerosas **ventajas** para la generación de artefactos en el entorno de desarrollo:
+
+- Análisis y resolución de dependencias.
+- Repositorios locales de bundles.
+- Versionado semántico de bundles.
+- Construcción y despliegue instantánea.
+- Testeo de bundles.
+
+### Capacidades y requerimientos
+
+Un aspecto esencial en el modelo de dependencias establecido en los framework basados en OSGI es el concepto de Namespace.
+
+Un **Namespace define la relación existente entre una capacidad y un requerimiento**, un productor de un determinado servicio y un consumidor del mismo.
+
+Por ejemplo:
+
+```css
+Proveedor: System Bundle
+Provide-Capability: osgi.ee; osgi.ee="OSGi/Minimum"; version:List="1.0, 1.1, 1.2", osgi.ee; osgi.ee="JavaSE"; version:List="1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6"
+
+Consumidor: Cualquier budle
+Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+```
+
+TODO: [IMAGEN]
+
+### Antipatrones
+
+Los **antipatrones** son soluciones negativas que suelen presentar más problemas que soluciones. Su estudio permitirá conocer los errores más comunes con la arquitectura OSGI:
+
+* **Class.forName()**
+
+```java
+Class clazz = Class.forName("org.example.domain.Event");
+```
+
+- Permite la carga de clases **sin especificar el ClassLoader** empleado y como único argumento el nombre de la clase.
+- Utiliza el ClassLoader en ejecución que contiene la clase en la que se hace uso de la misma.
+- Complejo de utilizar el OSGI ya que el **ClassLoader es independiente por cada Bundle.**
+- Es necesario tener cargada la clase en el ClassLoader del Bundle por lo que será necesario especificar dicha dependencia en el MANIFEST.MF **Import-Package**.
+- Susceptible a generar excepciones en tiempo de ejecución de tipo **ClassNotFoundException**.
+
+* **Thread Context ClassLoader**
+
+```java
+ClassLoader tccl = Thread.currentThread().getContextClassLoader();
+Class clazz = Class.forName("org.example.domain.Event", true, tccl);
+```
+
+- Es una de las soluciones **peor documentadas** de todas las especificaciones del J2EE.
+- OSGI **no puede garantizar** que el hilo en ejecución es el que se encuentra en ejecución para un determinado código fuente.
+- Los ClassLoaders en los hilos en OSGI no están definidos en las especificaciones de OSGI y su invocación **puede retornar “null”**.
+
+### Antipatrones - Soluciones
+
+* **Instanciación de objetos a través de una Factoría**
+
+```java
+public interface DomainObjectFactory {
+    Object createInstance(String tableName);
+}
+```
+
+- Evita la carga de clases dinámica por el classloader.
+- Crea objetos bajo petición desde el bundle que contiene las clases necesarias para crearlo.
+- No es válido para todos los casos de uso.
+
+* **Registro de Clases**
+
+```java
+session.registerClassForTable("EVENTS", Event.class);
+List events = session.createQuery("from Event").list();
+session.registerClass("org.example.domain.Person", Person.class);
+```
+
+- El cliente antes de realizar la petición realiza el registro de las clases en el la sesión.
+- Permite el registro de clases directamente utilizando únicamente su nombre.
+- Una vez registradas en la sesión puede recuperarse con Class.forName.
+
+* **Envío del ClassLoader**
+
+```java
+SessionFactory.createSession(MyClass.class.getClassLoader());
+session.setDomainClassLoader(MyClass.class.getClassLoader());
+```
+
+- Es la opción con menor impacto en el código existente.
+- Habrá que evaluar si esta opción se ajusta a las necesidades presentadas en cada caso.
+- Se puede enviar “null” para indicar que el framework debe encontrar el ClassLoader adecuado.
+
 **[Ir al índice](#Índice)**
 
 ## Ciclo de vida

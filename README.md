@@ -8,7 +8,7 @@
   5. uso de componentes básicos
 
 ## Introducción
-
+![]({{site.baseurl}}//%5BMaldiny%5D_Chunks.png)
 **OSGI (Open Services Gateway Initiative)**
 
 Framework creado en Marzo de 1999 **orientado a Servicios** e implementado en Java, que define la forma de crear módulos y la forma en que estos interactúan entre sí en tiempo de ejecución. 
@@ -81,4 +81,3 @@ TODO:
 TODO:
 
 **[Ir al índice](#Índice)**
-

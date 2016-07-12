@@ -194,7 +194,50 @@ session.setDomainClassLoader(MyClass.class.getClassLoader());
 
 ## Ciclo de vida
 
-TODO:
+### Bundle Manifest
+
+- **Bundle-Activator:** Especifica el nombre de la clase que será invocada durante el arranque y la parada del bundle a los métodos respectivamente. Esta clase deberá implementar los métodos de BundleActivator start() / stop(). p.e.j: com.acme.fw.Activator
+- **Bundle-Category:** Listado de categorías separados por coma al que pertenece el bundle. p.e.j.: osgi, test, nursery
+- **Bundle-ClassPath:** Listado de jar separados por coma que serán cargados en el classpath del bundle durante su arranque. p.e.j: /jar/http.jar,.
+- **Bundle-ManifestVersion:** Define el listado de reglas de especificación del bundle. p.e.j.: 2
+- **Bundle-Name:** Define el nombre del bundle. p.e.j: Firewall
+- **Bundle-SymbolicName:** Especifica el nombre identificativo único para el contenedor de bundles. p.e.j: com.acme.daffy
+- **Bundle-Version:** Número de la versión del bundle. p.e.j: 1.1
+- **Export-Package:** Listado de paquetes exportados por el bundle especificando la versión de forma opcional pero recomendable. p.e.j: org.osgi.util.tracker;version=1.3
+- **Import-Package:** Listado de paquetes importados por el bundle necesarios para la ejecución del mismo. p.e.j: org.osgi.util.tracker,org.osgi.service.io;version=1.4
+
+### Estados de un bundle
+
+TODO: IMAGEN
+
+- **Installed:** El bundle se ha instalado satisfactoriamente.
+- **Resolved:** Todas las clases de java necesarias están disponibles. Este estado indica que el bundle está listo para ser iniciado o detenido.
+- **Starting:** El bundle está iniciándose. El método BundleActivator.start está siendo invocado y aún no terminado su ejecución. 
+- **Stopping:** El bundle está deteniéndose. El método BundleActivator.stop está siendo invocado y aún no terminado su ejecución.
+- **Active:** El bundle ha sido activado satisfactoriamente y está en ejecución. El método BundleActivator.start ha sido invocado y ha terminado su ejecución.
+- **Uninstalled:** El bundle se ha desinstalado. No podrá cambiar de estado nuevamente.
+
+### Bundle/BundleContext/BundleActivator
+
+* **Bundle Simbolic Name (BSN) y Bundle Version**
+El nombre y la versión especificada por el desarrollador. La combinación de ambos es el identificador único de un bundle en el framework.
+
+	* **getSymbolicName**: Obtiene el bundle name de un bundle.
+	* **getVersion**: Obtiene la versión de un bundle.
+
+Es posible instalar el mismo bundle varias veces siempre y cuando esta pareja de valores no se encuentre ya desplegada en el framework.
+
+* **Bundle location**
+
+Nombre asignado por el framework en el momento de la instalación. Especifica la URL para localizar el JAR.
+
+	* **getLocation:** Obtiene la localización de un bundle (inputstream, OBR, URL,...)
+
+* **Bundle ID**
+
+Es un ID de tipo long asignado por el framework único para el bundle durante todo su ciclo de vida. Su propósito es identificar de forma única un bundle dentro del framework.
+
+	* **getBundleID:** Obtiene el identificador de un bundle.
 
 **[Ir al índice](#Índice)**
 

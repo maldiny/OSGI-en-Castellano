@@ -163,9 +163,9 @@ public interface DomainObjectFactory {
 }
 ```
 
-- Evita la carga de clases dinámica por el classloader.
-- Crea objetos bajo petición desde el bundle que contiene las clases necesarias para crearlo.
-- No es válido para todos los casos de uso.
+1. Evita la carga de clases dinámica por el classloader.
+2. Crea objetos bajo petición desde el bundle que contiene las clases necesarias para crearlo.
+3. No es válido para todos los casos de uso.
 
 * **Registro de Clases**
 
@@ -175,9 +175,9 @@ List events = session.createQuery("from Event").list();
 session.registerClass("org.example.domain.Person", Person.class);
 ```
 
-- El cliente antes de realizar la petición realiza el registro de las clases en el la sesión.
-- Permite el registro de clases directamente utilizando únicamente su nombre.
-- Una vez registradas en la sesión puede recuperarse con Class.forName.
+1. El cliente antes de realizar la petición realiza el registro de las clases en el la sesión.
+2. Permite el registro de clases directamente utilizando únicamente su nombre.
+3. Una vez registradas en la sesión puede recuperarse con Class.forName.
 
 * **Envío del ClassLoader**
 
@@ -186,9 +186,9 @@ SessionFactory.createSession(MyClass.class.getClassLoader());
 session.setDomainClassLoader(MyClass.class.getClassLoader());
 ```
 
-- Es la opción con menor impacto en el código existente.
-- Habrá que evaluar si esta opción se ajusta a las necesidades presentadas en cada caso.
-- Se puede enviar “null” para indicar que el framework debe encontrar el ClassLoader adecuado.
+1. Es la opción con menor impacto en el código existente.
+2. Habrá que evaluar si esta opción se ajusta a las necesidades presentadas en cada caso.
+3. Se puede enviar “null” para indicar que el framework debe encontrar el ClassLoader adecuado.
 
 **[Ir al índice](#Índice)**
 

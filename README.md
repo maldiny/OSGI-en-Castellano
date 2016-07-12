@@ -163,9 +163,9 @@ public interface DomainObjectFactory {
 }
 ```
 
-1. Evita la carga de clases dinámica por el classloader.
-2. Crea objetos bajo petición desde el bundle que contiene las clases necesarias para crearlo.
-3. No es válido para todos los casos de uso.
+  1. Evita la carga de clases dinámica por el classloader.
+  2. Crea objetos bajo petición desde el bundle que contiene las clases necesarias para crearlo.
+  3. No es válido para todos los casos de uso.
 
 * **Registro de Clases**
 

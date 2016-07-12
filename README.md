@@ -222,8 +222,8 @@ TODO: IMAGEN
 * **Bundle Simbolic Name (BSN) y Bundle Version**
 El nombre y la versión especificada por el desarrollador. La combinación de ambos es el identificador único de un bundle en el framework.
 
-	* **getSymbolicName**: Obtiene el bundle name de un bundle.
-	* **getVersion**: Obtiene la versión de un bundle.
+> **getSymbolicName**: Obtiene el bundle name de un bundle.
+> **getVersion**: Obtiene la versión de un bundle.
 
 Es posible instalar el mismo bundle varias veces siempre y cuando esta pareja de valores no se encuentre ya desplegada en el framework.
 
@@ -231,13 +231,13 @@ Es posible instalar el mismo bundle varias veces siempre y cuando esta pareja de
 
 Nombre asignado por el framework en el momento de la instalación. Especifica la URL para localizar el JAR.
 
-	* **getLocation:** Obtiene la localización de un bundle (inputstream, OBR, URL,...)
+> **getLocation:** Obtiene la localización de un bundle (inputstream, OBR, URL,...)
 
 * **Bundle ID**
 
 Es un ID de tipo long asignado por el framework único para el bundle durante todo su ciclo de vida. Su propósito es identificar de forma única un bundle dentro del framework.
 
-	* **getBundleID:** Obtiene el identificador de un bundle.
+> **getBundleID:** Obtiene el identificador de un bundle.
 
 **[Ir al índice](#Índice)**
 

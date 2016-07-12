@@ -21,7 +21,7 @@ OSGi intenta solventar los problemas del tradicional "classloader" de la máquin
 
 La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente figura, las cuales se detallan a continuación:
 
-TODO: [Imagen]![]({{site.baseurl}}//%5BMaldiny%5D_Configurar_Un_Step.png)
+TODO: [Imagen]
 
 * **Bundles**: Componentes OSGI creados por los desarrolladores.
 * **Servicios**: Capa encargada de conectar distintos bundles de manera dinámica.
@@ -44,6 +44,17 @@ TODO: [Imagen]![]({{site.baseurl}}//%5BMaldiny%5D_Configurar_Un_Step.png)
   * JSR 112 → javax.resource.spi, cci
   * JSR 173 → javax.xml.stream
   * JSR 315 → javax.servlet (3.0)
+
+### Versionado semántico
+
+TODO [IMAGEN]
+
+* **Major**: Actualizaciones incompatibles para ambos, el consumidor y el publicador de la API.
+* **Minor**: Actualizaciones compatibles para el consumidor pero no para el proveedor de la API.
+* **Micro**: Actualizaciones que no afectan al API, por ejemplo, un fix.
+* **Qualifier**: Un identificador como puede ser un timestamp.
+
+**El consumidor de una API deberá importar un rango que comienza con la versión base y termina con la siguiente versión Major. Por ejemplo: [4.2,5)**
 
 **[Ir al índice](#Índice)**
 
@@ -70,3 +81,4 @@ TODO:
 TODO:
 
 **[Ir al índice](#Índice)**
+

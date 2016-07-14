@@ -347,16 +347,151 @@ Las dependencias obligatorias han de ser resueltas en primer lugar para poder re
 <reference id="M" interface="com.acme.Bar" availability="mandatory"/>
 ```
 
+### Filtros LDAP y propiedades de los servicios
+
+Los filtros LDAP vienen definidos por la RFC2254 y se emplean en OSGI por ejemplo para crear máscaras en la carga de ficheros de propiedades. Un resumen de su sintaxis es el siguiente:
+
+* El operador AND, OR y NOT se representa por “&”, “|” y “!” respectivamente.
+* El “=” representa comparación de igualdad para las expresiones de nombre/valor.
+* El comodín se representa por un “*”.
+
+Como se puede ver en el siguiente ejemplo, el filtro es: **(.*\\.jar|.*\\.cfg)**
+
+TODO: IMAGEN
+
+Esto indicará al servicio de configuración que será necesario cargar en el directorio especificado todos aquellos ficheros cuya extensión sea **“.jar” o “.cfg”** independientemente de cual sea su nombre especificado por “.*” que indica uno o más caracteres sea cual sea.
+
+Se utilizará el **carácter especial “\\”** para especificar el carácter “.” como tal y no su significado en el lenguaje LDAP.
+
+### Alternativas a los servicios dinámicos
+
+Al recuperar servicios en OSGI puede ocasionar **errores** ocasionados por las siguientes casuísticas:
+
+- Los bundles que los publican no se hayan desplegado.
+- Los servicios no se hayan registrado.
+- Se hayan detenido los bundles que publican los servicios....
+
+Una posible **solución** sería crear listeners para buscar directamente la referencia a los servicios del siguiente modo:
+
+1. **Recuperar todos** los servicios registrados.
+2. Registrar un **ServiceListener** para monitorizar los cambios que se produzcan.
+
+**Problema:** Entre el paso 1 y el paso 2 se pueden registrar servicios.
+**Solucion+Problema:** Invertir el orden de los pasos. Esto puede generar el registro por duplicado del mismo servicio.
+
+### Declarative Service intermediario con la capa de servicios 
+
+1. Module Layer: Define el modelo de modularización, Este módulo define la reglas para el intercambio de paquetes java entre los Bundles. 
+
+TODO: IMAGEN
+
+2. Service Layer: La capa de servicios proporciona un modelo programación dinámico para los desarrolladores de bundles, simplificando el desarrollo y despliegue de módulos a través del desacople de la especificación del servicio (java interface), de su implementación. 
+
+TODO: IMAGEN
+
+> Solución: Crear ServiceTrakers o referenciar los servicios mediante Declarative Services.
+
 **[Ir al índice](#Índice)**
 
 ## Uso de componentes básicos
 
-TODO:
+### Log Service
+
+> Ver ejemplo Log Service
+
+- LogService provee de un sistema de log común para el framework OSGI.
+- El bundle LogService facilita dos servicios:
+  - Escritura de Log: Destinado a insertar nuevas ocurrencias en el log.
+  - Lectura de Log: Destinado a recuperar el log.
+- Mediante el **LogReaderService** se permite recibir objetos de tipo LogEntry en el momento de ser generados.
+- Se facilita de una interfaz gráfica para consultarlos en tiempo real.
+
+TODO: IMAGEN
+
+### HTTP Service
+
+> Ver ejemplo HTTP Service
+
+- Facilita los protocolos de comunicación HTTP, HTML, XML y servlets a los bundles para que puedan interactuar remotamente con los servicios que exponen.
+- El **HTTP Service** soporta dos estándares:
+  - **Registrar servlets:** Registrar un objeto Java que implementa el Java Servlet API.
+  - **Registrar recursos:** Registrar un HTML, una imagen o cualquier otro recurso estático.
+- HTTP Service soporta al menos la versión 2.1 de Java Servlet API.
+
+TODO: IMAGEN
+
+### Configuration Admin Service
+
+> Ver ejemplo Configuration Admin Service
+
+El servicio de configuración de OSGI establece un **mecanismo de administración, gestión y acceso centralizado a las propiedades** cargadas en el framework.
+
+- La configuración se puede cargar a partir de su definición en un **fichero “.cfg”**. 
+- Se puede crear **programáticamente** en tiempo de ejecución.
+
+1. Alta de un recurso de propiedades:
+
+```java
+Dictionary properties = new Hashtable();
+properties.put("service.pidySmsService");
+registration = context.registerService(ManagedService.class.getName(), 
+                         new SmsService(), properties);
+```
+
+2. Acceso a un recurso de propiedades:
+
+```java
+ServiceReference caRef = bundleContext.getServiceReference(ConfigurationAdmin.class.getName());
+ConfigurationAdmin configAdmin = (ConfigurationAdmin)  bundleContext.getService(caRef);  
+Configuration config = configAdmin.getConfiguration("mySmsService");
+Dictionary props = config.getProperties();
+props.put("keyalue"); // Codificación de las propiedades
+config.update(props); // Persistencia del cambio en el servicio de configuración
+```
+
+TODO: IMAGEN
+
+### Declarative Services
+
+> Ver ejemplo Declarative Service
+
+Permite realizar la declaración de servicios OSGI a través de un XML utilizando el framework de OSGI a partir de la versión 4.0.
+
+```xml
+<component name="productor.impl.ProductorImpl"> 
+	<implementation class="productor.impl.ProductorImpl"/> 
+	<service> 
+		<provide interface="productor.Productor"/> 
+	</service> 
+</component>
+```
+
+```java
+@Component
+public class Consumidor {
+	
+	Productor productor;
+
+	@Reference(name="productor", service=Productor.class)
+	public void setProductor(Productor productor) {
+		this.productor = productor;
+	}
+}
+```
+
+TODO: IMAGEN
 
 **[Ir al índice](#Índice)**
 
 ## Referencias
 
-TODO:
+- OSGI Alliance: http://www.osgi.org/
+- OSGI Especificaciones: https://osgi.org/download/r6/osgi.core-6.0.0.pdf
+- Apache Felix: http://felix.apache.org/
+- Apache Karaf: http://karaf.apache.org/
+- BndTools: http://bndtools.org/
+- aQute: http://www.aqute.biz/Bnd/Bnd
+- The OSGi μservice model: https://jaxenter.com/osgi-enroute-a-new-framework-for-osgi-applications-117514.html 
+- Introduction to OSGI: https://jaxenter.com/a-gentle-introduction-to-osgi-103732.html
 
 **[Ir al índice](#Índice)**

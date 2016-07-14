@@ -268,13 +268,84 @@ Bundle-ActivationPolicy ::= policy ( ’;’ directive )*
 policy ::= ’lazy’
 ```
 
-TODO: PPT transparencia 19
+### Refresco de un bundle
+
+El refresco de un bundle **creará una nueva revisión del bundle** mientras el bundle existente siga conectado con otros bundles.
+
+Estas revisiones antiguas del bundle pueden eliminarse del framework realizando la “limpieza” del framework invocando al método “**refreshBundles**(Collection, FrameworkListener,...).
+
+El proceso de refresco **detendrá cualquier bundle que haga referencia** al bundle que se está refrescando almacenando su estado actual, de tal forma, que si en su configuración se define como “START_TRANSIENT”, tras el refresco pasará de nuevo a estado activo.
+
+TODO: IMAGEN
+
+### System Bundle
+
+- El system bundle es el bundle que representa el **framework** del contenedor.
+- Siempre se le asignará como el bundle con **identificador cero (0).**
+- Su ciclo de vida no es como el de resto de bundles.
+  - **start**: No realiza nada porque el System bundle ya se encuentra en funcionamiento.
+  - **stop**: Realiza la parada de todo el framework.
+  - **update**: Para y reinicia el framework en otro hilo.
+  - **uninstall**: Esta operación no se puede realizar. Retorna un BundleException.
+- Provee un **servicio de tipo “Package Admin”** que provee acceso a las librerías internas del sistema.
+- El **StartLevel** de este bundle es el **0** y no puede ser modificado.
+
+TODO: IMAGEN
+
+### Bundles independientes del orden de inicio
+
+Es posible en OSGI definir el orden en el que se inician los bundles en el framework a partir del **StartLevel** que tengan definidos. Esta solución no está recomendada ya que según se incrementa el número de bundles desplegados en el sistema se hace más difícil de mantener.
+
+Una solución más recomendada es **crear cada bundle independiente del orden en el que se inician**. Para ello OSGI provee de los siguientes mecanismos:
+
+* **Release 1:** OSGI envía eventos al registrar y desregistrar servicios. Mediante **ServiceListeners** será posible recibir estos eventos.
+
+* **Release 2:** OSGI introduce el concepto de **ServiceTracker**. El ServiceTracker monitorizará el alta, modificación y borrado de servicios a partir de un filtro que se defina.
+
+* **Release 4:** OSGI introduce el concepto de **DeclarativeServices**. Los DeclarativeService permitirán manejar de forma dinámica el registro de servicios de una forma más sencilla de implementar y mantener para el desarrollador. Adicionalmente, esta solución es más escalable al delegar la carga de clases y la creación de objetos al Framework.
+
+### BundleTracker y ServiceTracker
+
+* **BundleTracker**
+
+	* El propósito del bundle tracker es simplificar el rastreo de eventos realizados sobre los bundles, principalmente el cambio de estado de los bundles, instalación, activación, parada, arranque,...
+
+* **ServiceTracker**
+
+  * El propósito del service tracker es simplificar el rastreo de referencias a servicios OSGI, los objetos de tipo ServiceReference. Sus argumentos son:
+  
+  	S- El tipo del servicio a rastrear.
+	T - El tipo del servicio a rastrear.
+    
+TODO: IMAGEN
 
 **[Ir al índice](#Índice)**
 
 ## Principios de los servicios
 
-TODO:
+### Servicios dinámicos
+
+El contenedor Blueprint es el encargado de manejar de forma dinámica la construcción y destrucción de servicios en un framework OSGI.
+
+* **Referencia a Proxys:** El manejador de servicios ante la solicitud de un servicio debe proveer de un servicio que cumpla la interfaz solicitada en un determinado periodo de tiempo a través de un proxy al servicio expuesto. En el momento en el que el servicio deje de estar disponible, el proxy generará una excepción de tipo “ServiceUnavailableException”.
+
+* **Registro condicional de servicios:** El manejador de servicios es responsable de registrar los servicios en el Registro de Servicios de OSGI. En caso de que el manejador de servicios detecte que alguna dependencia obligatoria no ha sido resuelta el servicio no será registrado ni ninguno de sus servicios.
+
+Al invocar un servicio desde un Bundle, éste se bloqueará hasta que el framework sea capaz de satisfacer la petición o bien, se descartará al superar el timeout (cinco minutos).  (0=Infinito)
+
+```xml
+<reference id="logService" interface="org.osgi.service.log.LogService" timeout="100000" />
+```
+
+Las dependencias obligatorias han de ser resueltas en primer lugar para poder resolver o crear el resto de servicios por el manejador de servicios. Por ejemplo en el siguiente caso, el servicio “S” no podrá construirse hasta que se obtenga el servicio “M”:
+
+“S” no se creará hasta que “M” se resuelva:
+
+```xml
+<service id="S" ref="A" interface="com.acme.Foo"/>
+<bean id="A" class="com.acme.FooImpl"><property name="bar" ref="m"/></bean>
+<reference id="M" interface="com.acme.Bar" availability="mandatory"/>
+```
 
 **[Ir al índice](#Índice)**
 

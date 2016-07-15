@@ -47,7 +47,7 @@ La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente f
 
 ### Versionado semántico
 
-TODO [IMAGEN]
+<p align="center"><img src="Imagenes//Osgi-versioning.png</p>
 
 * **Major**: Actualizaciones incompatibles para ambos, el consumidor y el publicador de la API.
 * **Minor**: Actualizaciones compatibles para el consumidor pero no para el proveedor de la API.
@@ -76,11 +76,11 @@ Los paquetes se reflejan en el osgi.wiring.package. Un **Import-Package** se map
 * **Import-Package:** com.everis.foo; version=1
 * **Export-Package:** com.everis.foo; version=1
 
-TODO: [IMAGEN]
+![]({{site.baseurl}}//Osgi-wiring.png)
 
 ### Entornos de ejecución
 
-TODO: [IMAGEN]
+![]({{site.baseurl}}//Osgi-EntornosDeEjecucion.png)
 
 - Apache Felix
 - Apache Karaf
@@ -98,7 +98,7 @@ Para el desarrollo de bundles OSGI se recomienda disponer de los siguientes fram
 - **Maven-bundle-plugin** para la generación de los MANIFEST.MF a partir del pom.xml
 - **Apache Felix** como entorno OSGI de despliegue de bundles.
 
-TODO: [IMAGEN]
+![]({{site.baseurl}}//Osgi-EntornosDeEjecucion.png)
 
 Opcionalmente a estos componentes, nombrar la existencia del plugin de eclipse **BndTools** que nos facilitará numerosas **ventajas** para la generación de artefactos en el entorno de desarrollo:
 
@@ -124,7 +124,7 @@ Consumidor: Cualquier budle
 Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.6))"
 ```
 
-TODO: [IMAGEN]
+![]({{site.baseurl}}//Osgi-Capacidades.png)
 
 ### Antipatrones
 
@@ -208,7 +208,7 @@ session.setDomainClassLoader(MyClass.class.getClassLoader());
 
 ### Estados de un bundle
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-CicloDeVida.png)
 
 - **Installed:** El bundle se ha instalado satisfactoriamente.
 - **Resolved:** Todas las clases de java necesarias están disponibles. Este estado indica que el bundle está listo para ser iniciado o detenido.
@@ -276,7 +276,7 @@ Estas revisiones antiguas del bundle pueden eliminarse del framework realizando 
 
 El proceso de refresco **detendrá cualquier bundle que haga referencia** al bundle que se está refrescando almacenando su estado actual, de tal forma, que si en su configuración se define como “START_TRANSIENT”, tras el refresco pasará de nuevo a estado activo.
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-BundleRefresh.png)
 
 ### System Bundle
 
@@ -290,7 +290,7 @@ TODO: IMAGEN
 - Provee un **servicio de tipo “Package Admin”** que provee acceso a las librerías internas del sistema.
 - El **StartLevel** de este bundle es el **0** y no puede ser modificado.
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-BundleRefresh.png)
 
 ### Bundles independientes del orden de inicio
 
@@ -317,7 +317,7 @@ Una solución más recomendada es **crear cada bundle independiente del orden en
   	S- El tipo del servicio a rastrear.
 	T - El tipo del servicio a rastrear.
     
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-BundleTracker.png)
 
 **[Ir al índice](#Índice)**
 
@@ -357,7 +357,7 @@ Los filtros LDAP vienen definidos por la RFC2254 y se emplean en OSGI por ejempl
 
 Como se puede ver en el siguiente ejemplo, el filtro es: **(.*\\.jar|.*\\.cfg)**
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-LDAPFilters.png)
 
 Esto indicará al servicio de configuración que será necesario cargar en el directorio especificado todos aquellos ficheros cuya extensión sea **“.jar” o “.cfg”** independientemente de cual sea su nombre especificado por “.*” que indica uno o más caracteres sea cual sea.
 
@@ -383,11 +383,11 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 1. Module Layer: Define el modelo de modularización, Este módulo define la reglas para el intercambio de paquetes java entre los Bundles. 
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-DeclarativeServices.png)
 
 2. Service Layer: La capa de servicios proporciona un modelo programación dinámico para los desarrolladores de bundles, simplificando el desarrollo y despliegue de módulos a través del desacople de la especificación del servicio (java interface), de su implementación. 
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-DeclarativeServices2.png)
 
 > Solución: Crear ServiceTrakers o referenciar los servicios mediante Declarative Services.
 
@@ -406,7 +406,7 @@ TODO: IMAGEN
 - Mediante el **LogReaderService** se permite recibir objetos de tipo LogEntry en el momento de ser generados.
 - Se facilita de una interfaz gráfica para consultarlos en tiempo real.
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-LogService.png)
 
 ### HTTP Service
 
@@ -418,7 +418,7 @@ TODO: IMAGEN
   - **Registrar recursos:** Registrar un HTML, una imagen o cualquier otro recurso estático.
 - HTTP Service soporta al menos la versión 2.1 de Java Servlet API.
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-HttpService.png)
 
 ### Configuration Admin Service
 
@@ -449,7 +449,7 @@ props.put("keyalue"); // Codificación de las propiedades
 config.update(props); // Persistencia del cambio en el servicio de configuración
 ```
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-ConfigService.png)
 
 ### Declarative Services
 
@@ -479,7 +479,7 @@ public class Consumidor {
 }
 ```
 
-TODO: IMAGEN
+![]({{site.baseurl}}//Osgi-DS.png)
 
 **[Ir al índice](#Índice)**
 

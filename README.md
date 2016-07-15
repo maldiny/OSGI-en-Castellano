@@ -317,7 +317,7 @@ Una solución más recomendada es **crear cada bundle independiente del orden en
   	S- El tipo del servicio a rastrear.
 	T - El tipo del servicio a rastrear.
     
-![]({{site.baseurl}}//Osgi-BundleTracker.png)
+<p align="center"><img src="Imagenes//Osgi-BundleTracker.png"></p>
 
 **[Ir al índice](#Índice)**
 

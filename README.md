@@ -21,7 +21,7 @@ OSGi intenta solventar los problemas del tradicional "classloader" de la máquin
 
 La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente figura, las cuales se detallan a continuación:asd
 
-![](Imagenes//Osgi-layers.png)
+<p align="center">![](Imagenes//Osgi-layers.png)</p>
 
 * **Bundles**: Componentes OSGI creados por los desarrolladores.
 * **Servicios**: Capa encargada de conectar distintos bundles de manera dinámica.

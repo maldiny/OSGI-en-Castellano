@@ -124,7 +124,7 @@ Consumidor: Cualquier budle
 Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.6))"
 ```
 
-![]({{site.baseurl}}//Osgi-Capacidades.png)
+<p align="center"><img src="Imagenes//Osgi-Capacidades.png"></p>
 
 ### Antipatrones
 

@@ -357,7 +357,7 @@ Los filtros LDAP vienen definidos por la RFC2254 y se emplean en OSGI por ejempl
 
 Como se puede ver en el siguiente ejemplo, el filtro es: **(.*\\.jar|.*\\.cfg)**
 
-![]({{site.baseurl}}//Osgi-LDAPFilters.png)
+<p align="center"><img src="Imagenes//Osgi-LDAPFilters.png"></p>
 
 Esto indicará al servicio de configuración que será necesario cargar en el directorio especificado todos aquellos ficheros cuya extensión sea **“.jar” o “.cfg”** independientemente de cual sea su nombre especificado por “.*” que indica uno o más caracteres sea cual sea.
 

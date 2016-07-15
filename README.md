@@ -397,7 +397,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 ### Log Service
 
-> Ver ejemplo Log Service
+> [Ver ejemplo Log Service](Ejemplos/Log Service/LogService)
 
 - LogService provee de un sistema de log común para el framework OSGI.
 - El bundle LogService facilita dos servicios:
@@ -410,7 +410,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 ### HTTP Service
 
-> Ver ejemplo HTTP Service
+> [Ver ejemplo HTTP Service](Ejemplos/Http Service/HttpService)
 
 - Facilita los protocolos de comunicación HTTP, HTML, XML y servlets a los bundles para que puedan interactuar remotamente con los servicios que exponen.
 - El **HTTP Service** soporta dos estándares:
@@ -422,7 +422,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 ### Configuration Admin Service
 
-> Ver ejemplo Configuration Admin Service
+> [Ver ejemplo Configuration Admin Service](Ejemplos/Declarative%20Service)
 
 El servicio de configuración de OSGI establece un **mecanismo de administración, gestión y acceso centralizado a las propiedades** cargadas en el framework.
 

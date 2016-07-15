@@ -383,7 +383,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 1. Module Layer: Define el modelo de modularización, Este módulo define la reglas para el intercambio de paquetes java entre los Bundles. 
 
-![]({{site.baseurl}}//Osgi-DeclarativeServices.png)
+<p align="center"><img src="Imagenes//Osgi-DeclarativeServices.png"></p>
 
 2. Service Layer: La capa de servicios proporciona un modelo programación dinámico para los desarrolladores de bundles, simplificando el desarrollo y despliegue de módulos a través del desacople de la especificación del servicio (java interface), de su implementación. 
 

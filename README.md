@@ -479,7 +479,7 @@ public class Consumidor {
 }
 ```
 
-![]({{site.baseurl}}//Osgi-DS.png)
+<p align="center"><img src="Imagenes//Osgi-DS.png"></p>
 
 **[Ir al índice](#Índice)**
 

@@ -387,7 +387,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 2. Service Layer: La capa de servicios proporciona un modelo programación dinámico para los desarrolladores de bundles, simplificando el desarrollo y despliegue de módulos a través del desacople de la especificación del servicio (java interface), de su implementación. 
 
-![]({{site.baseurl}}//Osgi-DeclarativeServices2.png)
+<p align="center"><img src="Imagenes//Osgi-DeclarativeServices2.png"></p>
 
 > Solución: Crear ServiceTrakers o referenciar los servicios mediante Declarative Services.
 

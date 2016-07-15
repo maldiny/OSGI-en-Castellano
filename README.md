@@ -208,7 +208,7 @@ session.setDomainClassLoader(MyClass.class.getClassLoader());
 
 ### Estados de un bundle
 
-![]({{site.baseurl}}//Osgi-CicloDeVida.png)
+<p align="center"><img src="Imagenes//Osgi-CicloDeVida.png"></p>
 
 - **Installed:** El bundle se ha instalado satisfactoriamente.
 - **Resolved:** Todas las clases de java necesarias están disponibles. Este estado indica que el bundle está listo para ser iniciado o detenido.

@@ -406,7 +406,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 - Mediante el **LogReaderService** se permite recibir objetos de tipo LogEntry en el momento de ser generados.
 - Se facilita de una interfaz gráfica para consultarlos en tiempo real.
 
-![]({{site.baseurl}}//Osgi-LogService.png)
+<p align="center"><img src="Imagenes//Osgi-LogService.png"></p>
 
 ### HTTP Service
 

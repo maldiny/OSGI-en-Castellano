@@ -381,6 +381,8 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
 
 ### Declarative Service intermediario con la capa de servicios 
 
+> [Ver ejemplo Module Layer vs Service Layer](Ejemplos/Declarative Service intermediario con la capa de servicios/ModuleVsServiceLayer)
+
 1. Module Layer: Define el modelo de modularización, Este módulo define la reglas para el intercambio de paquetes java entre los Bundles. 
 
 <p align="center"><img src="Imagenes//Osgi-DeclarativeServices.png"></p>

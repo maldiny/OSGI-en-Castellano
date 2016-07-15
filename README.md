@@ -453,7 +453,7 @@ config.update(props); // Persistencia del cambio en el servicio de configuració
 
 ### Declarative Services
 
-> [Ver ejemplo Declarative Service](Ejemplos/Log Service/LogService)
+> [Ver ejemplo Declarative Service](Ejemplos/Declarative%20Service)
 
 Permite realizar la declaración de servicios OSGI a través de un XML utilizando el framework de OSGI a partir de la versión 4.0.
 

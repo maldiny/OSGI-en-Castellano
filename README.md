@@ -76,11 +76,11 @@ Los paquetes se reflejan en el osgi.wiring.package. Un **Import-Package** se map
 * **Import-Package:** com.everis.foo; version=1
 * **Export-Package:** com.everis.foo; version=1
 
-![]({{site.baseurl}}//Osgi-wiring.png)
+<p align="center"><img src="Imagenes//Osgi-wiring.png"></p>
 
 ### Entornos de ejecución
 
-![]({{site.baseurl}}//Osgi-EntornosDeEjecucion.png)
+<p align="center"><img src="Imagenes//Osgi-EntornosDeEjecucion.png"></p>
 
 - Apache Felix
 - Apache Karaf
@@ -98,7 +98,7 @@ Para el desarrollo de bundles OSGI se recomienda disponer de los siguientes fram
 - **Maven-bundle-plugin** para la generación de los MANIFEST.MF a partir del pom.xml
 - **Apache Felix** como entorno OSGI de despliegue de bundles.
 
-![]({{site.baseurl}}//Osgi-EntornosDeEjecucion.png)
+<p align="center"><img src="Imagenes//Osgi-DesarrolloIDE.png"></p>
 
 Opcionalmente a estos componentes, nombrar la existencia del plugin de eclipse **BndTools** que nos facilitará numerosas **ventajas** para la generación de artefactos en el entorno de desarrollo:
 

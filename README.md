@@ -449,7 +449,7 @@ props.put("keyalue"); // Codificación de las propiedades
 config.update(props); // Persistencia del cambio en el servicio de configuración
 ```
 
-![]({{site.baseurl}}//Osgi-ConfigService.png)
+<p align="center"><img src="Imagenes//Osgi-ConfigService.png"></p>
 
 ### Declarative Services
 

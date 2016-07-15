@@ -290,7 +290,7 @@ El proceso de refresco **detendrá cualquier bundle que haga referencia** al bun
 - Provee un **servicio de tipo “Package Admin”** que provee acceso a las librerías internas del sistema.
 - El **StartLevel** de este bundle es el **0** y no puede ser modificado.
 
-![]({{site.baseurl}}//Osgi-BundleRefresh.png)
+<p align="center"><img src="Imagenes//Osgi-SystemBundle.png"></p>
 
 ### Bundles independientes del orden de inicio
 

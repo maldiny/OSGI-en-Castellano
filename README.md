@@ -19,7 +19,7 @@ Este framework provee al desarrollador de un entorno Java gestionado y seguro qu
 
 OSGi intenta solventar los problemas del tradicional "classloader" de la máquina virtual y de los servidores de aplicaciones Java. Para ello, en OSGI **cada bundle tiene su propio classpath separado del resto de classpath de los demás módulos.**
 
-La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente figura, las cuales se detallan a continuación:
+La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente figura, las cuales se detallan a continuación:asd
 
 ![]({{site.baseurl}}/Imagenes/Osgi-layers.png)
 

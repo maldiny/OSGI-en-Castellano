@@ -47,7 +47,7 @@ La arquitectura OSGI se divide en capas, tal y como se muestra en la siguiente f
 
 ### Versionado semántico
 
-<p align="center"><img src="Imagenes//Osgi-versioning.png</p>
+<p align="center"><img src="Imagenes//Osgi-versioning.png"></p>
 
 * **Major**: Actualizaciones incompatibles para ambos, el consumidor y el publicador de la API.
 * **Minor**: Actualizaciones compatibles para el consumidor pero no para el proveedor de la API.

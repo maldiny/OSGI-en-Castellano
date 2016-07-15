@@ -276,7 +276,7 @@ Estas revisiones antiguas del bundle pueden eliminarse del framework realizando 
 
 El proceso de refresco **detendrá cualquier bundle que haga referencia** al bundle que se está refrescando almacenando su estado actual, de tal forma, que si en su configuración se define como “START_TRANSIENT”, tras el refresco pasará de nuevo a estado activo.
 
-![]({{site.baseurl}}//Osgi-BundleRefresh.png)
+<p align="center"><img src="Imagenes//Osgi-BundleRefresh.png"></p>
 
 ### System Bundle
 

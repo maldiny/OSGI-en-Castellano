@@ -418,7 +418,7 @@ Una posible **solución** sería crear listeners para buscar directamente la ref
   - **Registrar recursos:** Registrar un HTML, una imagen o cualquier otro recurso estático.
 - HTTP Service soporta al menos la versión 2.1 de Java Servlet API.
 
-![]({{site.baseurl}}//Osgi-HttpService.png)
+<p align="center"><img src="Imagenes//Osgi-HttpService.png"></p>
 
 ### Configuration Admin Service
 

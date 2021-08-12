@@ -73,8 +73,8 @@ Un aspecto fundamental del framework de OSGI es la gestión de las dependencias 
 El framework resuelve las dependencias durante la **fase de Resolución**. El framework debe resolver ser capaz de localizar una capacidad para cada requerimiento para poder declarar un bundle como **Resolved**.
 
 Los paquetes se reflejan en el osgi.wiring.package. Un **Import-Package** se mapea en el osgi.wiring.package como un requerimiento mientras que un **Export-Package** se mapea como una capacidad.
-* **Import-Package:** com.everis.foo; version=1
-* **Export-Package:** com.everis.foo; version=1
+* **Import-Package:** com.maldiny.foo; version=1
+* **Export-Package:** com.maldiny.foo; version=1
 
 <p align="center"><img src="Imagenes//Osgi-wiring.png"></p>
 
@@ -256,7 +256,7 @@ La interfaz BundleActivator se invoca cuando un bundle se inicia o detiene en el
 La clase que implementa la interfaz se define en el fichero MANIFEST.MF del siguiente modo:
 
 ```css
-Bundle-Activator: com.everis.Activator
+Bundle-Activator: com.maldiny.Activator
 ```
 
 Los bundles de tipo Fragmento no disponen de un BundleActivator.

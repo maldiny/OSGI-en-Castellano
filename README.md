@@ -76,7 +76,7 @@ Los paquetes se reflejan en el osgi.wiring.package. Un **Import-Package** se map
 * **Import-Package:** com.maldiny.foo; version=1
 * **Export-Package:** com.maldiny.foo; version=1
 
-<p align="center"><img src="Imagenes//Osgi-wiring.png"></p>
+<p align="center"><img src="Imagenes//Osgi-wiring-maldiny.png"></p>
 
 ### Entornos de ejecución
 
